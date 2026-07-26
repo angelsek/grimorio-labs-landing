@@ -84,12 +84,29 @@ La clave de Supabase que está en el HTML es la **publicable** (`anon`), la
 misma que ya viaja al navegador de cualquiera que abra la app. No es un
 secreto y no hay que rotarla por tenerla en un repo público.
 
-## Pendiente
+## Correo de contacto
 
-El pie de página muestra `hola@grimoriolabs.com`, que **todavía no existe**.
-Para que funcione hay que crear la redirección en Cloudflare: **Email →
-Email Routing**, y apuntar esa dirección al correo personal. Es gratis con
-el dominio en la cuenta. Hasta entonces, ese enlace no llega a ningún lado.
+El pie muestra `contacto@grimoriolabs.com`, creado con **Cloudflare Email
+Routing** (Email → Email Routing en el panel del dominio).
+
+Conviene tener claro qué hace y qué no hace esa herramienta, porque define
+cómo se gestionan los mensajes:
+
+- **Recibe y reenvía.** Lo que llega a `contacto@grimoriolabs.com` se
+  redirige a la dirección de destino configurada en el panel. No hay casilla
+  propia ni webmail: los mensajes se leen en la bandeja de destino.
+- **No envía.** Email Routing no da SMTP saliente, así que no se puede
+  responder *desde* `contacto@grimoriolabs.com` con solo esa configuración.
+  Una respuesta sale con la dirección personal a la vista de quien escribió.
+
+Para responder con la dirección de la marca hace falta sumar un proveedor de
+envío (un relay SMTP conectado a Gmail, o directamente una casilla de correo
+con dominio propio, lo que reemplaza a Email Routing cambiando los MX). No
+está resuelto todavía.
+
+Si la dirección de contacto cambia, actualizar el enlace del pie en
+`index.html` — hay un chequeo automatizado que verifica que el texto visible
+y el `mailto:` coincidan, justamente para que no queden desalineados.
 
 ## Desarrollo
 
