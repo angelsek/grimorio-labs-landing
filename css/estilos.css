@@ -1,0 +1,260 @@
+/* --------------------------------------------------------------------
+   Paleta y tipografías tomadas de la app (proyecto/css/estilos.css) para
+   que la marca sea la misma en la landing y en el producto.
+
+   Dos decisiones deliberadas de legibilidad, no accidentes de estilo:
+   1) El cuerpo de texto usa Inter, no EB Garamond. La serif del proyecto
+      se reserva para títulos (Cinzel): a tamaño de párrafo cuesta leerla.
+   2) Nada en cursiva, en ninguna parte.
+   Las dos vienen de una regla ya establecida en el proyecto.
+   -------------------------------------------------------------------- */
+:root{
+  --tinta:#0b0906;
+  --cuero:#171009;
+  --cuero-claro:#1f1710;
+  --oro:#c9a26a;
+  --oro-claro:#e8cf9a;
+  --ascua:#6a4a9a;
+  --ascua-clara:#8c6ac2;
+  --texto-claro:#e8dcc0;
+  --texto-tenue:#b8a988;
+  --musgo:#5c7a5e;
+  --peligro:#d4674a;
+  --fuente-display:'Cinzel',serif;
+  --fuente-ui:'Inter',sans-serif;
+  --ancho:1080px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--tinta);
+  color:var(--texto-claro);
+  font-family:var(--fuente-ui);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Textura de fondo: dos halos radiales muy suaves, sin imágenes. */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(60rem 40rem at 15% -10%, rgba(106,74,154,.20), transparent 65%),
+    radial-gradient(50rem 35rem at 95% 5%, rgba(201,162,106,.12), transparent 60%);
+}
+.envoltorio{position:relative;z-index:1}
+
+/* Ojo con este par de reglas: `.contenedor` se combina con `.barra`,
+   `.hero`, `.seccion` y `.pie`, y todas esas necesitan su propio padding
+   vertical. Si unas y otras usaran el atajo `padding`, la que viniera
+   después en la hoja ganaría por completo (misma especificidad) y borraría
+   el margen horizontal, dejando el texto pegado al borde de la pantalla.
+   Por eso acá se usa `padding-inline` y allá `padding-block`: son
+   longhands distintos y conviven sin pisarse. */
+.contenedor{max-width:var(--ancho);margin:0 auto;padding-inline:24px}
+
+a{color:var(--oro-claro)}
+a:focus-visible,button:focus-visible,input:focus-visible{
+  outline:2px solid var(--oro-claro);
+  outline-offset:3px;
+}
+
+h1,h2,h3{font-family:var(--fuente-display);font-weight:600;line-height:1.25;margin:0}
+h2{font-size:1.9rem;color:var(--oro-claro)}
+h3{font-size:1.12rem;color:var(--oro-claro)}
+
+/* ---------------------------------------------------------------- barra */
+.barra{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-block:18px;
+}
+.barra-marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.barra-marca img{width:40px;height:40px;display:block}
+.barra-marca-nombre{
+  font-family:var(--fuente-display);font-size:1.15rem;font-weight:700;
+  color:var(--oro-claro);letter-spacing:.04em;
+}
+
+.idioma{display:flex;gap:6px;background:var(--cuero);border:1px solid rgba(201,162,106,.28);border-radius:999px;padding:4px}
+.idioma button{
+  font-family:var(--fuente-ui);font-size:.82rem;font-weight:500;
+  color:var(--texto-tenue);background:none;border:0;border-radius:999px;
+  padding:6px 13px;cursor:pointer;
+}
+.idioma button:hover{color:var(--texto-claro)}
+.idioma button[aria-pressed="true"]{background:var(--ascua);color:#fff;font-weight:600}
+
+/* ----------------------------------------------------------------- hero */
+.hero{text-align:center;padding-block:56px 68px}
+.hero-logo{width:168px;height:168px;margin:0 auto 26px;display:block}
+.hero h1{
+  font-size:clamp(2.4rem,7vw,3.9rem);font-weight:700;letter-spacing:.06em;
+  color:var(--oro-claro);
+}
+.hero-tagline{
+  font-family:var(--fuente-display);font-size:clamp(1rem,2.6vw,1.25rem);
+  color:var(--oro);letter-spacing:.14em;text-transform:uppercase;
+  margin:14px 0 0;
+}
+.hero-linea{
+  width:180px;height:1px;margin:26px auto;
+  background:linear-gradient(90deg,transparent,var(--oro),transparent);
+}
+.hero-bajada{max-width:620px;margin:0 auto;font-size:1.12rem;color:var(--texto-claro)}
+
+/* -------------------------------------------------------------- secciones */
+.seccion{padding-block:52px}
+.seccion-titulo{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+.seccion-titulo::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(201,162,106,.5),transparent);
+}
+.prosa{max-width:70ch;font-size:1.05rem}
+.prosa p{margin:0 0 16px}
+.prosa p:last-child{margin-bottom:0}
+
+/* ------------------------------------------------------------- producto */
+.producto{
+  background:var(--cuero);
+  border:1px solid rgba(201,162,106,.26);
+  border-radius:14px;
+  padding:30px;
+}
+.producto-cabecera{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.producto-cabecera img{width:76px;height:76px;display:block;flex:none}
+.producto-nombre{font-family:var(--fuente-display);font-size:2rem;font-weight:700;color:var(--oro-claro);letter-spacing:.04em}
+.producto-subtitulo{font-size:.95rem;color:var(--texto-tenue);margin-top:2px}
+.producto-insignia{
+  display:inline-block;margin-top:8px;
+  font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#dcd0f4;background:rgba(106,74,154,.55);
+  border:1px solid var(--ascua-clara);border-radius:999px;padding:3px 11px;
+}
+.producto-desc{max-width:70ch;margin:0 0 26px}
+
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+.rasgo{
+  background:var(--cuero-claro);
+  border:1px solid rgba(201,162,106,.16);
+  border-radius:10px;padding:18px;
+}
+.rasgo h3{margin-bottom:6px}
+.rasgo p{margin:0;font-size:.95rem;color:var(--texto-claro)}
+
+/* Nota del principio de producto: mesa real, no mesa virtual. */
+.principio{
+  margin-top:26px;padding:20px 22px;
+  background:rgba(92,122,94,.14);
+  border:1px solid rgba(92,122,94,.5);
+  border-left:3px solid var(--musgo);
+  border-radius:10px;
+}
+.principio h3{color:#a8c8a6;margin-bottom:6px}
+.principio p{margin:0;max-width:70ch;font-size:.98rem}
+
+.acciones{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
+.boton{
+  display:inline-block;font-family:var(--fuente-ui);font-size:1rem;font-weight:600;
+  text-decoration:none;cursor:pointer;border-radius:9px;padding:13px 26px;
+  border:1px solid transparent;
+}
+.boton-principal{background:var(--oro);color:#241a0d;border-color:var(--oro-claro)}
+.boton-principal:hover{background:var(--oro-claro)}
+.acciones-nota{font-size:.92rem;color:var(--texto-tenue)}
+
+/* --------------------------------------------------------------- novedades */
+.novedades{
+  background:var(--cuero);
+  border:1px solid rgba(201,162,106,.26);
+  border-radius:14px;padding:30px;
+}
+.aviso-form{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;max-width:560px}
+.aviso-form input[type="email"]{
+  flex:1 1 260px;min-width:0;
+  font-family:var(--fuente-ui);font-size:1rem;
+  color:var(--texto-claro);background:var(--tinta);
+  border:1px solid rgba(201,162,106,.42);border-radius:9px;
+  padding:13px 15px;
+}
+.aviso-form input[type="email"]::placeholder{color:#8d8069}
+/* Trampa para robots: invisible para personas, sin display:none (algunos
+   bots lo detectan). Si viene con texto, no se envía nada. */
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.aviso-estado{margin:14px 0 0;font-size:.95rem;min-height:1.4em}
+.aviso-estado[data-tono="ok"]{color:#a8c8a6}
+.aviso-estado[data-tono="error"]{color:var(--peligro)}
+.aviso-nota{margin:16px 0 0;font-size:.88rem;color:var(--texto-tenue);max-width:70ch}
+
+/* ------------------------------------------------------------------- pie */
+.pie{
+  margin-top:44px;padding-block:30px 40px;
+  border-top:1px solid rgba(201,162,106,.2);
+  font-size:.9rem;color:var(--texto-tenue);
+}
+.pie-fila{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.pie-legal{margin:18px 0 0;max-width:80ch;font-size:.84rem;line-height:1.6}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{padding-block:32px 48px}
+  .hero-logo{width:128px;height:128px}
+  .producto,.novedades{padding:22px}
+  .producto-nombre{font-size:1.7rem}
+  h2{font-size:1.6rem}
+}
+
+/* En pantallas táctiles los botones del selector de idioma quedaban en
+   28px de alto, por debajo del mínimo de 44px que se puede tocar sin
+   errarle. Se agranda el área, no la tipografía. */
+@media (pointer:coarse),(max-width:640px){
+  .idioma button{
+    min-height:44px;
+    display:inline-flex;align-items:center;
+    padding:6px 16px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+
+/* ------------------------------------------------ páginas de documento
+   Privacidad y términos. Mismo cromo que la portada (cabecera, paleta,
+   pie), pero con una columna de lectura angosta: son textos largos y a
+   ancho completo se vuelven incómodos de seguir renglón a renglón. */
+.legal{max-width:44rem}
+.legal-titulo{margin-bottom:10px}
+.legal-fecha{
+  font-size:.86rem;color:var(--texto-tenue);
+  margin:0 0 34px;padding-bottom:18px;
+  border-bottom:1px solid rgba(201,162,106,.22);
+}
+.legal h2{
+  font-size:1.32rem;margin:38px 0 12px;
+  padding-top:4px;
+}
+.legal h3{font-size:1.02rem;margin:24px 0 8px;color:var(--oro)}
+.legal p{margin:0 0 14px;color:var(--texto-claro)}
+.legal p:last-child{margin-bottom:0}
+.legal ul{margin:0 0 14px;padding-left:1.35em;color:var(--texto-claro)}
+.legal li{margin-bottom:9px}
+.legal li:last-child{margin-bottom:0}
+.legal strong{color:var(--oro-claro);font-weight:600}
+
+/* Enlace de vuelta a la portada, arriba del título. */
+.volver{
+  display:inline-block;margin-bottom:22px;
+  font-size:.9rem;text-decoration:none;color:var(--texto-tenue);
+}
+.volver:hover{color:var(--texto-claro)}
+
+/* Fila de enlaces del pie (privacidad / términos). */
+.pie-nav{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 0}
+.pie-nav a{font-size:.88rem;color:var(--texto-tenue);text-decoration:none}
+.pie-nav a:hover{color:var(--oro-claro);text-decoration:underline}
