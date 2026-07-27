@@ -9,9 +9,28 @@ ningún otro lado y no hay nada que sincronizar a mano.
 
 ## Contenido
 
-Un solo archivo, `index.html`, con el CSS y el JS embebidos. Sin
-dependencias, sin build, sin framework. Lo único externo son las tipografías
-(Cinzel e Inter, desde Google Fonts) y las imágenes de `assets/`.
+Tres páginas — `index.html` (portada), `privacidad.html` y `terminos.html` —
+que comparten `css/estilos.css` y `js/landing.js`. Sin dependencias, sin
+build, sin framework. Lo único externo son las tipografías (Cinzel e Inter,
+desde Google Fonts) y las imágenes de `assets/`.
+
+El CSS y el JS empezaron embebidos en `index.html` y se extrajeron al sumar
+las páginas legales: con tres copias del mismo cromo, los estilos divergen
+en la primera edición. El script compartido se salta solo las secciones que
+una página no tiene (el formulario de novedades, por ejemplo) — así el mismo
+archivo sirve a las tres.
+
+Las páginas legales existen por partida doble: Google las exige para mostrar
+el nombre "Maese" en la pantalla de consentimiento de OAuth en lugar del
+subdominio del proyecto de Supabase, y de todos modos se debían — la portada
+recolecta correos y la app guarda cuentas y contenido.
+
+**Regla del toggle de idioma**: todo nodo con `data-i18n` tiene que ser una
+hoja, sin elementos hijos. La traducción asigna `textContent`, así que un
+`<strong>` dentro de un nodo marcado se pierde en el primer cambio de
+idioma. Hay un chequeo automatizado que lo hace cumplir; si hace falta
+negrita dentro de un párrafo traducible, se parte el párrafo (ver los
+procesadores en `privacidad.html` como patrón).
 
 La paleta y las tipografías son las mismas que usa la app, a propósito, para
 que la marca se vea igual en los dos lados. Dos desvíos deliberados, no
@@ -142,7 +161,7 @@ Cualquier servidor estático sirve. Desde la raíz del repo:
 python -m http.server 8788
 ```
 
-Los chequeos automatizados (jsdom, 87 chequeos sobre el selector de idioma,
+Los chequeos automatizados (jsdom, 129 chequeos sobre el selector de idioma,
 el formulario y dos reglas de CSS que ya causaron un bug real) se escribieron
 en el scratchpad de la sesión que armó la página y no se commitearon acá.
 Los bugs que encontraron están documentados en los comentarios del propio
