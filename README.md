@@ -84,6 +84,32 @@ La clave de Supabase que está en el HTML es la **publicable** (`anon`), la
 misma que ya viaja al navegador de cualquiera que abra la app. No es un
 secreto y no hay que rotarla por tenerla en un repo público.
 
+### Verificado contra la base real (2026-07-26)
+
+Se probó cada operación con la clave publicable, contra la tabla ya creada
+en producción:
+
+| Operación | Resultado | |
+|---|---|---|
+| INSERT correo válido | 201 | Permitido, es la única que debe funcionar |
+| INSERT correo repetido | 409 | La landing lo muestra como éxito |
+| INSERT correo inválido | 400 | Lo rechaza el check constraint, no solo el navegador |
+| SELECT | `[]` | No se puede cosechar la lista |
+| UPDATE | 0 filas | Bloqueado |
+| DELETE | 0 filas | Bloqueado |
+
+**Trampa al interpretar esto:** UPDATE y DELETE devuelven **HTTP 204**, que
+parece éxito. No lo es: sin política de RLS para esa operación las filas son
+invisibles, así que la sentencia afecta cero filas y PostgREST igual contesta
+204. Para comprobar que de verdad no se tocó nada hay que verificarlo por un
+camino indirecto — acá se reinsertó el mismo correo y el 409 por clave
+duplicada demostró que la fila seguía intacta. Un 204 por sí solo no prueba
+ni que borró ni que no borró.
+
+El flujo completo se probó además sobre el sitio en vivo, enviando el
+formulario de verdad desde `https://grimoriolabs.com`: alta correcta, alta
+repetida y correo inválido, las tres ramas con su mensaje esperado.
+
 ## Correo de contacto
 
 El pie muestra `contacto@grimoriolabs.com`, creado con **Cloudflare Email
