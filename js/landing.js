@@ -66,9 +66,6 @@
     "Tus manuales, en tu cuenta":"Your books, in your account",
     "Se guardan al vuelo y los abres desde cualquier máquina. Las imágenes se quedan en tu navegador: esas no las subimos.":"They save as you go and you open them from any machine. Images stay in your browser: those we don't upload.",
 
-    "Línea editorial propia, no una imitación":"Our own house style, not an imitation",
-    "Prensa Arcana no copia el aspecto de ningún manual publicado ni es un clon de Homebrewery: no hay una sola línea de su código en el proyecto. El motor de maquetado está escrito desde cero y el estilo de la página es el nuestro, oro y violeta arcano.":"Prensa Arcana doesn't copy the look of any published rulebook, and it is not a Homebrewery clone: there is not a single line of its code in the project. The layout engine is written from scratch and the look of the page is our own, gold and arcane violet.",
-
     "Abrir Prensa Arcana":"Open Prensa Arcana",
     "Gratis, y todavía en pruebas. Necesitas una cuenta para guardar tus manuales.":"Free, and still in testing. You need an account to save your books.",
 
