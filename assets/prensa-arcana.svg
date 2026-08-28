@@ -1,0 +1,24 @@
+<!-- El viewBox esta recortado al dibujo, no en 0 0 64 64: el margen
+     sobrante hacia que la marca se dibujara mas chica de lo necesario
+     dentro de su caja. Sacandolo, la misma cantidad de pixeles rinde
+     un 14% mas de marca, que es lo que se nota como icono de pestana a
+     16 px. Los limites reales del dibujo son x de 6 a 58 e y de 4,75 a
+     59,4; la caja los contiene con un pelo de aire. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 4 56 56" role="img" aria-label="Prensa Arcana">
+  <title>Prensa Arcana</title>
+  <!-- Placa de la prensa -->
+  <rect x="10" y="6" width="44" height="34" rx="4"
+        fill="#4a3169" stroke="#c9a26a" stroke-width="2.5"/>
+  <!-- Sigilo arcano grabado en la placa -->
+  <g stroke="#e8cf9a" stroke-width="2.4" stroke-linecap="round">
+    <path d="M32 13 V33"/>
+    <path d="M23.4 18 L40.6 28"/>
+    <path d="M40.6 18 L23.4 28"/>
+  </g>
+  <circle cx="32" cy="23" r="4.6" fill="none" stroke="#c9a26a" stroke-width="2.2"/>
+  <!-- Barra de presion -->
+  <rect x="6" y="42" width="52" height="5" rx="2.5" fill="#c9a26a"/>
+  <!-- Pliegos impresos -->
+  <rect x="15" y="50" width="34" height="3.4" rx="1.7" fill="#e7d9b8"/>
+  <rect x="19" y="56" width="26" height="3.4" rx="1.7" fill="#b8a988"/>
+</svg>

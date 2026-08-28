@@ -49,6 +49,29 @@
     "Entrar a Maese":"Open Maese",
     "Gratis para empezar. Solo necesitas una cuenta.":"Free to start. All you need is an account.",
 
+    "Editor de manuales y suplementos":"Sourcebook and supplement editor",
+    "En pruebas":"In testing",
+    "Un taller de imprenta para tus manuales caseros. Escribes en Markdown a la izquierda y a la derecha ves la hoja A4 ya maquetada, con sus columnas y sus márgenes medidos en milímetros de verdad. Lo que ves en pantalla es lo que sale impreso, y de ahí se exporta a PDF.":"A print shop for your homebrew books. You write Markdown on the left, and on the right you see the A4 page already laid out, with its columns and its margins measured in real millimeters. What you see on screen is what comes out printed, and from there it exports to PDF.",
+
+    "Bloques y fichas de manual":"Sourcebook blocks and stat cards",
+    "Cinco cajas de texto y siete fichas con su color propio: monstruo, objeto mágico, conjuro, rasgo de clase, trampa, PNJ y lugar. Una paleta con treinta plantillas las inserta por ti.":"Five text boxes and seven cards with a color of their own: monster, magic item, spell, class feature, trap, NPC and location. A palette of thirty templates inserts them for you.",
+    "Te avisa antes de que el PDF corte":"It tells you before the PDF cuts off",
+    "Si una hoja se pasa de los 297 mm, marca en rojo la línea exacta por donde va a cortar. Te enteras mientras escribes, no al imprimir.":"If a page runs past 297 mm, it marks in red the exact line where it will cut. You find out while you write, not when you print.",
+    "Maquetado a varias columnas":"Multi-column layout",
+    "Dos, tres o cuatro columnas, con bloques anchos que las cruzan, saltos de página y control de cómo rodea el texto a las imágenes.":"Two, three or four columns, with wide blocks that span across them, page breaks, and control over how the text wraps around images.",
+    "Imágenes que se ajustan arrastrando":"Images you resize by dragging",
+    "Mueve el tirador sobre la vista previa y el ancho nuevo queda escrito en tu texto fuente, sin que tengas que calcularlo.":"Drag the handle over the preview and the new width is written into your source text, with no arithmetic on your part.",
+    "Tablas de tirada":"Roll tables",
+    "Para encuentros y para tesoro. La de tesoro alinea sola las columnas de montos, así se comparan de un vistazo.":"For encounters and for treasure. The treasure one lines up the amount columns by itself, so they can be compared at a glance.",
+    "Tus manuales, en tu cuenta":"Your books, in your account",
+    "Se guardan al vuelo y los abres desde cualquier máquina. Las imágenes se quedan en tu navegador: esas no las subimos.":"They save as you go and you open them from any machine. Images stay in your browser: those we don't upload.",
+
+    "Línea editorial propia, no una imitación":"Our own house style, not an imitation",
+    "Prensa Arcana no copia el aspecto de ningún manual publicado ni es un clon de Homebrewery: no hay una sola línea de su código en el proyecto. El motor de maquetado está escrito desde cero y el estilo de la página es el nuestro, oro y violeta arcano.":"Prensa Arcana doesn't copy the look of any published rulebook, and it is not a Homebrewery clone: there is not a single line of its code in the project. The layout engine is written from scratch and the look of the page is our own, gold and arcane violet.",
+
+    "Abrir Prensa Arcana":"Open Prensa Arcana",
+    "Gratis, y todavía en pruebas. Necesitas una cuenta para guardar tus manuales.":"Free, and still in testing. You need an account to save your books.",
+
     "Novedades":"What's next",
     "Estamos trabajando en más herramientas para la mesa. Deja tu correo y te avisamos cuando haya algo nuevo.":"We're working on more tools for the table. Leave your email and we'll let you know when something new is ready.",
     "tu@correo.com":"you@email.com",
@@ -60,6 +83,10 @@
 
     /* Título de la pestaña del navegador. */
     "Grimorio Labs — Soluciones para juegos de mesa y rol":"Grimorio Labs — Tools for tabletop games and roleplaying",
+    /* Estos dos faltaban desde el principio: sin ellos el titulo de la
+       pestana de privacidad y terminos se queda en espanol en modo ingles. */
+    "Política de privacidad — Grimorio Labs":"Privacy policy — Grimorio Labs",
+    "Términos de servicio — Grimorio Labs":"Terms of service — Grimorio Labs",
 
     /* ---- Navegación compartida con las páginas de privacidad y términos --
        Este diccionario lo usan las tres páginas: el mismo landing.js se

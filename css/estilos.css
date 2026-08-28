@@ -126,6 +126,9 @@ h3{font-size:1.12rem;color:var(--oro-claro)}
   border-radius:14px;
   padding:30px;
 }
+/* Segunda tarjeta en adelante: sin esto las dos cajas quedan pegadas,
+   porque `.producto` no trae margen propio. */
+.producto + .producto{margin-top:26px}
 .producto-cabecera{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
 .producto-cabecera img{width:76px;height:76px;display:block;flex:none}
 .producto-nombre{font-family:var(--fuente-display);font-size:2rem;font-weight:700;color:var(--oro-claro);letter-spacing:.04em}
