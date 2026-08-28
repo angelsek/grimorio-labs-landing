@@ -69,6 +69,9 @@
     "Abrir Prensa Arcana":"Open Prensa Arcana",
     "Gratis, y todavía en pruebas. Necesitas una cuenta para guardar tus manuales.":"Free, and still in testing. You need an account to save your books.",
 
+    "Abre una ficha para ver todo lo que hace.":"Open a card to see everything it does.",
+    "Cerrar":"Close",
+
     "Novedades":"What's next",
     "Estamos trabajando en más herramientas para la mesa. Deja tu correo y te avisamos cuando haya algo nuevo.":"We're working on more tools for the table. Leave your email and we'll let you know when something new is ready.",
     "tu@correo.com":"you@email.com",
@@ -263,6 +266,67 @@
     return nav.indexOf("es") === 0 ? "es" : (nav ? "en" : "es");
   }
 
+  /* ------------------------------------------------------------ productos */
+
+  /* Las fichas abren el <dialog> del producto. El detalle ya está escrito en
+     el HTML, uno por producto: no se inyecta nada, así el selector de idioma
+     lo traduce como a cualquier otro nodo sin saber que hay modales. */
+
+  var HTML = document.documentElement;
+
+  /* `showModal` da gratis el telón, la tecla Esc y el foco atrapado adentro.
+     Un navegador sin soporte cae al atributo `open`, que muestra el detalle
+     en la página en vez de dejarlo inalcanzable: se pierde el modal, no el
+     contenido. */
+  function abrirModal(dlg){
+    if(typeof dlg.showModal === "function"){ dlg.showModal(); }
+    else{ dlg.setAttribute("open", ""); }
+    HTML.classList.add("sin-scroll");
+  }
+
+  function cerrarModal(dlg){
+    if(typeof dlg.close === "function"){ dlg.close(); }
+    else{ dlg.removeAttribute("open"); soltarScroll(); }
+  }
+
+  function soltarScroll(){ HTML.classList.remove("sin-scroll"); }
+
+  function initProductos(){
+    var fichas = document.querySelectorAll("[data-abre]");
+    var i;
+
+    for(i = 0; i < fichas.length; i++){
+      (function(ficha){
+        ficha.addEventListener("click", function(){
+          var dlg = document.getElementById(ficha.getAttribute("data-abre"));
+          if(dlg) abrirModal(dlg);
+        });
+      })(fichas[i]);
+    }
+
+    var modales = document.querySelectorAll(".modal");
+    for(i = 0; i < modales.length; i++){
+      (function(dlg){
+        var boton = dlg.querySelector("[data-cierra]");
+        if(boton) boton.addEventListener("click", function(){ cerrarModal(dlg); });
+
+        /* Clic en el telón. El telón es el propio <dialog>, así que llega con
+           `target` igual al diálogo; por eso todo el relleno vive en la caja
+           interior y el diálogo no tiene ninguno, o el borde del relleno
+           cerraría el modal al hacerle clic. */
+        dlg.addEventListener("click", function(ev){
+          if(ev.target === dlg) cerrarModal(dlg);
+        });
+
+        /* Devolver el scroll acá y no en cada cierre por separado: `close` es
+           el único punto por el que pasan los tres caminos (botón, telón y la
+           tecla Esc, que maneja el navegador sin avisarnos). Repartirlo deja
+           la página trabada en cuanto aparezca un cuarto camino. */
+        dlg.addEventListener("close", soltarScroll);
+      })(modales[i]);
+    }
+  }
+
   /* ------------------------------------------------------------ novedades */
 
   var SUPABASE_URL = "https://ggkzfljhqufwwulfjudy.supabase.co";
@@ -353,6 +417,7 @@
     if(bEs) bEs.addEventListener("click", function(){ aplicarIdioma("es"); });
     if(bEn) bEn.addEventListener("click", function(){ aplicarIdioma("en"); });
 
+    initProductos();
     initNovedades();
     aplicarIdioma(idiomaGuardado());
   }
@@ -365,5 +430,6 @@
 
   /* Expuesto solo para los chequeos automatizados. */
   window.GL = {aplicarIdioma:aplicarIdioma, t:t, correoValido:correoValido,
-               getIdioma:function(){ return idiomaActual; }};
+               getIdioma:function(){ return idiomaActual; },
+               abrirModal:abrirModal, cerrarModal:cerrarModal};
 })();

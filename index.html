@@ -56,101 +56,142 @@
 
   <section class="contenedor seccion" id="productos">
     <div class="seccion-titulo"><h2 data-i18n>Nuestros productos</h2></div>
+    <p class="fichas-nota" data-i18n>Abre una ficha para ver todo lo que hace.</p>
 
-    <article class="producto">
-      <div class="producto-cabecera">
-        <img src="assets/maese-icon-512.png" alt="Maese" width="76" height="76">
-        <div>
-          <div class="producto-nombre">Maese</div>
-          <div class="producto-subtitulo" data-i18n>Compendio del Director de Juego</div>
-          <span class="producto-insignia" data-i18n>Disponible</span>
+    <div class="fichas">
+      <!-- `aria-labelledby` en vez de un `aria-label` escrito a mano: el nombre
+           accesible sale del texto que ya está en la ficha, así que se traduce
+           solo y no hay una tercera copia de la misma frase que mantener. -->
+      <button class="ficha" type="button" aria-haspopup="dialog"
+              aria-labelledby="ficha-maese-nombre ficha-maese-sub" data-abre="modal-maese">
+        <img src="assets/maese-icon-512.png" alt="" width="96" height="96">
+        <span class="ficha-nombre" id="ficha-maese-nombre">Maese</span>
+        <span class="ficha-subtitulo" id="ficha-maese-sub" data-i18n>Compendio del Director de Juego</span>
+        <span class="producto-insignia" data-i18n>Disponible</span>
+      </button>
+
+      <!-- `aria-labelledby` en vez de un `aria-label` escrito a mano: el nombre
+           accesible sale del texto que ya está en la ficha, así que se traduce
+           solo y no hay una tercera copia de la misma frase que mantener. -->
+      <button class="ficha" type="button" aria-haspopup="dialog"
+              aria-labelledby="ficha-prensa-arcana-nombre ficha-prensa-arcana-sub" data-abre="modal-prensa-arcana">
+        <img src="assets/prensa-arcana.svg" alt="" width="96" height="96">
+        <span class="ficha-nombre" id="ficha-prensa-arcana-nombre">Prensa Arcana</span>
+        <span class="ficha-subtitulo" id="ficha-prensa-arcana-sub" data-i18n>Editor de manuales y suplementos</span>
+        <span class="producto-insignia" data-i18n>En pruebas</span>
+      </button>
+    </div>
+
+    <!-- Cada producto tiene su propio <dialog> escrito acá, en vez de un
+         modal único al que se le inyecta contenido: así el texto vive en el
+         DOM como el resto de la página y el selector de idioma lo traduce
+         sin tener que saber que los modales existen. -->
+    <dialog class="modal" id="modal-maese" aria-labelledby="nombre-maese">
+      <button class="modal-cerrar" type="button" data-cierra
+              data-i18n-aria-label="Cerrar" aria-label="Cerrar">&times;</button>
+      <div class="modal-caja">
+
+        <div class="producto-cabecera">
+          <img src="assets/maese-icon-512.png" alt="" width="76" height="76">
+          <div>
+            <div class="producto-nombre" id="nombre-maese">Maese</div>
+            <div class="producto-subtitulo" data-i18n>Compendio del Director de Juego</div>
+            <span class="producto-insignia" data-i18n>Disponible</span>
+          </div>
         </div>
+
+        <p class="producto-desc" data-i18n>El primero de la casa. Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.</p>
+
+        <div class="rejilla">
+          <div class="rasgo">
+            <h3 data-i18n>Bestiario de 450 criaturas</h3>
+            <p data-i18n>Fichas completas y buscables al instante, con más manuales que se suman por campaña.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Generador de encuentros</h3>
+            <p data-i18n>Arma encuentros equilibrados por presupuesto de experiencia, filtrados por entorno y por los manuales que uses.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Seguimiento de combate</h3>
+            <p data-i18n>Orden de iniciativa, puntos de golpe, condiciones y bitácora del combate, sin planillas sueltas.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Hojas de personaje</h3>
+            <p data-i18n>Especie, clase, subclase, trasfondo y conjuros que se autocompletan. La defensa se calcula sola según la armadura equipada.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Tus propias tablas</h3>
+            <p data-i18n>Carga tus listas de botín, rumores o pifias y tira sobre ellas el dado que quieras, con sus rangos.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Kit de mesa imprimible</h3>
+            <p data-i18n>Tarjetas de iniciativa y marcadores de condición para cortar y usar sobre la mesa física.</p>
+          </div>
+        </div>
+
+        <div class="principio">
+          <h3 data-i18n>Pensado para la mesa, no para la pantalla</h3>
+          <p data-i18n>Maese no es una mesa virtual y no intenta serlo. No tira los dados por ti ni resuelve el combate solo: justamente eso es lo que hace divertido jugar en persona.</p>
+        </div>
+
+        <div class="acciones">
+          <a class="boton boton-principal" href="https://maese.grimoriolabs.com" data-i18n>Entrar a Maese</a>
+          <span class="acciones-nota" data-i18n>Gratis para empezar. Solo necesitas una cuenta.</span>
+        </div>
+
       </div>
+    </dialog>
 
-      <p class="producto-desc" data-i18n>El primero de la casa. Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.</p>
+    <dialog class="modal" id="modal-prensa-arcana" aria-labelledby="nombre-prensa-arcana">
+      <button class="modal-cerrar" type="button" data-cierra
+              data-i18n-aria-label="Cerrar" aria-label="Cerrar">&times;</button>
+      <div class="modal-caja">
 
-      <div class="rejilla">
-        <div class="rasgo">
-          <h3 data-i18n>Bestiario de 450 criaturas</h3>
-          <p data-i18n>Fichas completas y buscables al instante, con más manuales que se suman por campaña.</p>
+        <div class="producto-cabecera">
+          <img src="assets/prensa-arcana.svg" alt="" width="76" height="76">
+          <div>
+            <div class="producto-nombre" id="nombre-prensa-arcana">Prensa Arcana</div>
+            <div class="producto-subtitulo" data-i18n>Editor de manuales y suplementos</div>
+            <span class="producto-insignia" data-i18n>En pruebas</span>
+          </div>
         </div>
-        <div class="rasgo">
-          <h3 data-i18n>Generador de encuentros</h3>
-          <p data-i18n>Arma encuentros equilibrados por presupuesto de experiencia, filtrados por entorno y por los manuales que uses.</p>
+
+        <p class="producto-desc" data-i18n>Un taller de imprenta para tus manuales caseros. Escribes en Markdown a la izquierda y a la derecha ves la hoja A4 ya maquetada, con sus columnas y sus márgenes medidos en milímetros de verdad. Lo que ves en pantalla es lo que sale impreso, y de ahí se exporta a PDF.</p>
+
+        <div class="rejilla">
+          <div class="rasgo">
+            <h3 data-i18n>Bloques y fichas de manual</h3>
+            <p data-i18n>Cinco cajas de texto y siete fichas con su color propio: monstruo, objeto mágico, conjuro, rasgo de clase, trampa, PNJ y lugar. Una paleta con treinta plantillas las inserta por ti.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Te avisa antes de que el PDF corte</h3>
+            <p data-i18n>Si una hoja se pasa de los 297 mm, marca en rojo la línea exacta por donde va a cortar. Te enteras mientras escribes, no al imprimir.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Maquetado a varias columnas</h3>
+            <p data-i18n>Dos, tres o cuatro columnas, con bloques anchos que las cruzan, saltos de página y control de cómo rodea el texto a las imágenes.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Imágenes que se ajustan arrastrando</h3>
+            <p data-i18n>Mueve el tirador sobre la vista previa y el ancho nuevo queda escrito en tu texto fuente, sin que tengas que calcularlo.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Tablas de tirada</h3>
+            <p data-i18n>Para encuentros y para tesoro. La de tesoro alinea sola las columnas de montos, así se comparan de un vistazo.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Tus manuales, en tu cuenta</h3>
+            <p data-i18n>Se guardan al vuelo y los abres desde cualquier máquina. Las imágenes se quedan en tu navegador: esas no las subimos.</p>
+          </div>
         </div>
-        <div class="rasgo">
-          <h3 data-i18n>Seguimiento de combate</h3>
-          <p data-i18n>Orden de iniciativa, puntos de golpe, condiciones y bitácora del combate, sin planillas sueltas.</p>
+
+        <div class="acciones">
+          <a class="boton boton-principal" href="https://prensaarcana.grimoriolabs.com" data-i18n>Abrir Prensa Arcana</a>
+          <span class="acciones-nota" data-i18n>Gratis, y todavía en pruebas. Necesitas una cuenta para guardar tus manuales.</span>
         </div>
-        <div class="rasgo">
-          <h3 data-i18n>Hojas de personaje</h3>
-          <p data-i18n>Especie, clase, subclase, trasfondo y conjuros que se autocompletan. La defensa se calcula sola según la armadura equipada.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Tus propias tablas</h3>
-          <p data-i18n>Carga tus listas de botín, rumores o pifias y tira sobre ellas el dado que quieras, con sus rangos.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Kit de mesa imprimible</h3>
-          <p data-i18n>Tarjetas de iniciativa y marcadores de condición para cortar y usar sobre la mesa física.</p>
-        </div>
+
       </div>
-
-      <div class="principio">
-        <h3 data-i18n>Pensado para la mesa, no para la pantalla</h3>
-        <p data-i18n>Maese no es una mesa virtual y no intenta serlo. No tira los dados por ti ni resuelve el combate solo: justamente eso es lo que hace divertido jugar en persona.</p>
-      </div>
-
-      <div class="acciones">
-        <a class="boton boton-principal" href="https://maese.grimoriolabs.com" data-i18n>Entrar a Maese</a>
-        <span class="acciones-nota" data-i18n>Gratis para empezar. Solo necesitas una cuenta.</span>
-      </div>
-    </article>
-
-    <article class="producto">
-      <div class="producto-cabecera">
-        <img src="assets/prensa-arcana.svg" alt="Prensa Arcana" width="76" height="76">
-        <div>
-          <div class="producto-nombre">Prensa Arcana</div>
-          <div class="producto-subtitulo" data-i18n>Editor de manuales y suplementos</div>
-          <span class="producto-insignia" data-i18n>En pruebas</span>
-        </div>
-      </div>
-
-      <p class="producto-desc" data-i18n>Un taller de imprenta para tus manuales caseros. Escribes en Markdown a la izquierda y a la derecha ves la hoja A4 ya maquetada, con sus columnas y sus márgenes medidos en milímetros de verdad. Lo que ves en pantalla es lo que sale impreso, y de ahí se exporta a PDF.</p>
-
-      <div class="rejilla">
-        <div class="rasgo">
-          <h3 data-i18n>Bloques y fichas de manual</h3>
-          <p data-i18n>Cinco cajas de texto y siete fichas con su color propio: monstruo, objeto mágico, conjuro, rasgo de clase, trampa, PNJ y lugar. Una paleta con treinta plantillas las inserta por ti.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Te avisa antes de que el PDF corte</h3>
-          <p data-i18n>Si una hoja se pasa de los 297 mm, marca en rojo la línea exacta por donde va a cortar. Te enteras mientras escribes, no al imprimir.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Maquetado a varias columnas</h3>
-          <p data-i18n>Dos, tres o cuatro columnas, con bloques anchos que las cruzan, saltos de página y control de cómo rodea el texto a las imágenes.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Imágenes que se ajustan arrastrando</h3>
-          <p data-i18n>Mueve el tirador sobre la vista previa y el ancho nuevo queda escrito en tu texto fuente, sin que tengas que calcularlo.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Tablas de tirada</h3>
-          <p data-i18n>Para encuentros y para tesoro. La de tesoro alinea sola las columnas de montos, así se comparan de un vistazo.</p>
-        </div>
-        <div class="rasgo">
-          <h3 data-i18n>Tus manuales, en tu cuenta</h3>
-          <p data-i18n>Se guardan al vuelo y los abres desde cualquier máquina. Las imágenes se quedan en tu navegador: esas no las subimos.</p>
-        </div>
-      </div>
-
-      <div class="acciones">
-        <a class="boton boton-principal" href="https://prensaarcana.grimoriolabs.com" data-i18n>Abrir Prensa Arcana</a>
-        <span class="acciones-nota" data-i18n>Gratis, y todavía en pruebas. Necesitas una cuenta para guardar tus manuales.</span>
-      </div>
-    </article>
+    </dialog>
   </section>
 
   <section class="contenedor seccion" id="novedades">

@@ -119,16 +119,89 @@ h3{font-size:1.12rem;color:var(--oro-claro)}
 .prosa p{margin:0 0 16px}
 .prosa p:last-child{margin-bottom:0}
 
-/* ------------------------------------------------------------- producto */
-.producto{
+/* ------------------------------------------------------------- productos
+   Los productos se muestran como fichas que abren un modal con el detalle.
+   Antes cada uno era una tarjeta larga y desplegada: con dos productos ya
+   había que bajar mucho para llegar al segundo, y con un tercero la sección
+   se volvía impracticable. */
+.fichas-nota{margin:0 0 22px;font-size:.95rem;color:var(--texto-tenue)}
+
+.fichas{display:flex;flex-wrap:wrap;gap:20px}
+.ficha{
+  /* El `max-width` no es decorativo: sin él, con dos productos cada ficha
+     se estira a media pantalla y deja de leerse como botón. */
+  flex:1 1 240px;max-width:320px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  text-align:center;cursor:pointer;
+  font-family:var(--fuente-ui);color:var(--texto-claro);
   background:var(--cuero);
   border:1px solid rgba(201,162,106,.26);
   border-radius:14px;
-  padding:30px;
+  padding:26px 20px 22px;
 }
-/* Segunda tarjeta en adelante: sin esto las dos cajas quedan pegadas,
-   porque `.producto` no trae margen propio. */
-.producto + .producto{margin-top:26px}
+.ficha img{width:96px;height:96px;display:block;margin-bottom:10px}
+.ficha-nombre{
+  font-family:var(--fuente-display);font-size:1.5rem;font-weight:700;
+  color:var(--oro-claro);letter-spacing:.04em;line-height:1.25;
+}
+.ficha-subtitulo{font-size:.95rem;color:var(--texto-tenue);line-height:1.45}
+.ficha .producto-insignia{margin-top:12px}
+.ficha:hover{border-color:var(--oro);background:var(--cuero-claro)}
+
+/* ---------------------------------------------------------------- modal */
+.modal{
+  width:min(780px,calc(100vw - 28px));
+  max-height:86vh;
+  padding:0;
+  background:var(--cuero);
+  color:var(--texto-claro);
+  border:1px solid rgba(201,162,106,.34);
+  border-radius:14px;
+  overflow:hidden;
+}
+/* Ojo con esta regla: el `display` va sobre `[open]`, nunca sobre `.modal`
+   a secas. Un <dialog> cerrado lo esconde la hoja del navegador con
+   `dialog:not([open]){display:none}`, que pierde contra cualquier clase
+   nuestra; con `.modal{display:flex}` los dos modales quedarían dibujados
+   en la página, uno debajo del otro. Es el mismo choque de especificidad
+   que ya apareció con el atributo `hidden` en la app. */
+/* El centrado va escrito acá y no se deja en manos de la hoja del
+   navegador. Hace falta un ancestro posicionado para el botón de cerrar, y
+   el `position:relative` que parecía la forma obvia de conseguirlo pisaba el
+   posicionamiento del <dialog>: el modal caía en el flujo normal del
+   documento, o sea que se dibujaba a la altura de la sección de productos y
+   se iba de pantalla en cuanto la página estaba scrolleada a otra parte.
+   `fixed` da las dos cosas a la vez, el ancestro y el anclaje a la ventana. */
+.modal[open]{
+  display:flex;flex-direction:column;
+  position:fixed;
+  /* `inset` y `margin` limpian lo que trae la hoja del navegador para un
+     <dialog> modal (`inset:0` + `margin:auto`). Dejarlos puestos pelea con
+     el centrado de abajo y el modal queda corrido hacia arriba. */
+  inset:auto;
+  margin:0;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+}
+.modal::backdrop{background:rgba(6,5,3,.74)}
+/* `min-height:0` para que el hijo flexible pueda encogerse y aparezca su
+   propia barra de scroll, en vez de desbordar el alto del modal. */
+.modal-caja{min-height:0;overflow-y:auto;padding:28px}
+/* Deja libre la esquina donde flota el botón de cerrar. */
+.modal .producto-cabecera{padding-right:44px}
+.modal-cerrar{
+  position:absolute;top:10px;right:10px;z-index:2;
+  min-width:44px;min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fuente-ui);font-size:1.6rem;line-height:1;
+  color:var(--texto-claro);background:none;border:0;border-radius:999px;
+  cursor:pointer;
+}
+.modal-cerrar:hover{color:var(--oro-claro);background:rgba(201,162,106,.14)}
+
+/* Con el modal abierto la página de atrás no debe correrse bajo la rueda. */
+.sin-scroll{overflow:hidden}
+
 .producto-cabecera{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
 .producto-cabecera img{width:76px;height:76px;display:block;flex:none}
 .producto-nombre{font-family:var(--fuente-display);font-size:2rem;font-weight:700;color:var(--oro-claro);letter-spacing:.04em}
@@ -207,7 +280,10 @@ h3{font-size:1.12rem;color:var(--oro-claro)}
   body{font-size:16px}
   .hero{padding-block:32px 48px}
   .hero-logo{width:128px;height:128px}
-  .producto,.novedades{padding:22px}
+  .novedades{padding:22px}
+  .modal-caja{padding:20px}
+  .modal{max-height:92vh}
+  .ficha{max-width:none}
   .producto-nombre{font-size:1.7rem}
   h2{font-size:1.6rem}
 }
