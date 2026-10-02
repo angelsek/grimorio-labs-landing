@@ -3,7 +3,8 @@
     "angelsek-herramientas": {
       "source": {
         "source": "github",
-        "repo": "angelsek/dev-monitor"
+        "repo": "angelsek/dev-monitor",
+        "ref": "equipo-dev--v0.2.0"
       }
     }
   },
