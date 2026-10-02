@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "angelsek-herramientas": {
+      "source": {
+        "source": "github",
+        "repo": "angelsek/dev-monitor"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "equipo-dev@angelsek-herramientas": true
+  }
+}
