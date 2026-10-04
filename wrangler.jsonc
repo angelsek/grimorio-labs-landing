@@ -1,0 +1,15 @@
+// Worker "grimorio-labs" (grimoriolabs.com), desplegado por Workers Builds en cada push.
+// Solo se publica public/: lo que esté fuera (esquemas SQL, docs, .github, .claude) nunca se sirve.
+// Los dominios (grimoriolabs.com y www) se gestionan en el panel de Cloudflare: si se declararan
+// aquí "routes", cada deploy reemplazaría las del panel.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "grimorio-labs",
+  "compatibility_date": "2026-07-27",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./public"
+  }
+}
