@@ -1,0 +1,6 @@
+# Archivos locales de wrangler
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
