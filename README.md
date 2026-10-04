@@ -14,6 +14,11 @@ que comparten `css/estilos.css` y `js/landing.js`. Sin dependencias, sin
 build, sin framework. Lo único externo son las tipografías (Cinzel e Inter,
 desde Google Fonts) y las imágenes de `assets/`.
 
+Todo lo que forma la web vive dentro de `public/` (las tres páginas, `css/`,
+`js/`, `assets/` y `stockeao/`). Fuera de esa carpeta queda lo que no es
+parte del sitio: `suscriptores.sql`, `.github/`, `.claude/` y la
+configuración de despliegue.
+
 El CSS y el JS empezaron embebidos en `index.html` y se extrajeron al sumar
 las páginas legales: con tres copias del mismo cromo, los estilos divergen
 en la primera edición. El script compartido se salta solo las secciones que
@@ -54,7 +59,7 @@ lugar de esta página.
 Servir las dos cosas desde un solo worker requeriría agregarle un script con
 ruteo por hostname y cambiarle la configuración de assets — es decir, tocar
 el deploy de la app que hoy funciona. No se justifica: esta landing es un
-único archivo estático y no comparte nada con la app salvo la marca.
+sitio estático pequeño y no comparte nada con la app salvo la marca.
 
 Tampoco vive dentro del repo de la app: ese repo se sirve completo como
 estático, así que la landing quedaría accesible también en
@@ -64,20 +69,32 @@ estático, así que la landing quedaría accesible también en
 
 ## Despliegue
 
-Conectado a Cloudflare Pages: cada push a `main` publica una versión nueva.
+Se despliega como un Worker de Cloudflare (`grimorio-labs`), no como
+Cloudflare Pages. **Workers Builds** está conectado a este repo: cada push a
+`main` publica una versión nueva y cada PR genera una vista previa.
+
+La configuración está en `wrangler.jsonc`: el Worker sirve solo assets, desde
+`./public`. **Solo `public/` se publica**; lo que está fuera
+(`suscriptores.sql`, `.github/`, `.claude/`) nunca se sirve. Antes
+la configuración automática publicaba el repo entero, por eso la web se
+movió a esa carpeta. Un archivo nuevo de la web va dentro de `public/`, y no
+hay que poner ahí nada que no deba ser público.
+
+Los dominios `grimoriolabs.com` y `www.grimoriolabs.com` se gestionan en el
+panel del Worker (**Settings → Domains & Routes**), no en `wrangler.jsonc`.
+`wrangler.jsonc` no declara `routes` a propósito: si lo hiciera, cada deploy
+reemplazaría las del panel.
 
 Para configurarlo la primera vez, en el panel de Cloudflare:
 
-1. **Workers & Pages → Create → Pages → Connect to Git**.
-2. Elegir este repo (`angelsek/grimorio-labs-landing`), rama `main`.
-3. Sin comando de build y sin directorio de salida: es HTML estático en la
-   raíz del repo. Si el panel exige un directorio, poner `/`.
-4. **Save and Deploy**.
-5. En el proyecto recién creado: **Custom domains → Set up a custom
-   domain** → `grimoriolabs.com`. El DNS y el certificado se provisionan
-   solos, porque el dominio ya está en la cuenta.
-
-Conviene agregar también `www.grimoriolabs.com` como segundo dominio custom.
+1. **Workers & Pages → Create → Import a repository** y elegir este repo
+   (`angelsek/grimorio-labs-landing`), rama `main`.
+2. Sin comando de build: el comando de deploy usa `wrangler.jsonc`, que ya
+   apunta a `./public`.
+3. En el Worker recién creado: **Settings → Domains & Routes → Add →
+   Custom domain** → `grimoriolabs.com` y `www.grimoriolabs.com`. El DNS y
+   el certificado se provisionan solos, porque el dominio ya está en la
+   cuenta.
 
 ## El formulario de novedades
 
@@ -150,19 +167,20 @@ con dominio propio, lo que reemplaza a Email Routing cambiando los MX). No
 está resuelto todavía.
 
 Si la dirección de contacto cambia, actualizar el enlace del pie en
-`index.html` — hay un chequeo automatizado que verifica que el texto visible
+`public/index.html` — hay un chequeo automatizado que verifica que el texto visible
 y el `mailto:` coincidan, justamente para que no queden desalineados.
 
 ## Desarrollo
 
-Cualquier servidor estático sirve. Desde la raíz del repo:
+Cualquier servidor estático sirve. Desde la raíz del repo, sirviendo solo
+`public/` (igual que en producción):
 
 ```bash
-python -m http.server 8788
+python -m http.server 8788 -d public
 ```
 
 Los chequeos automatizados (jsdom, 129 chequeos sobre el selector de idioma,
 el formulario y dos reglas de CSS que ya causaron un bug real) se escribieron
 en el scratchpad de la sesión que armó la página y no se commitearon acá.
 Los bugs que encontraron están documentados en los comentarios del propio
-`index.html`, justo arriba de las reglas que los causaron.
+`public/index.html`, justo arriba de las reglas que los causaron.

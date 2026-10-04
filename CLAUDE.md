@@ -15,3 +15,8 @@ Todo desarrollo nuevo (funcionalidad, corrección o refactor) pasa por el equipo
 - Caso especial: la Action de Claude solo se ejecuta si `.github/workflows/equipo-revision.yml` es idéntico al de
   la rama principal. Un PR que modifique ese workflow no puede revisarse a sí mismo: pasa por la puerta local y, si la
   rama está protegida, se quita temporalmente el check obligatorio para fusionarlo y se vuelve a exigir justo después.
+
+## Publicación
+
+Solo `public/` se publica en grimoriolabs.com (Worker `grimorio-labs`, ver `wrangler.jsonc`). No pongas ahí nada que
+no deba ser público. Los archivos nuevos de la web van dentro de `public/`.
