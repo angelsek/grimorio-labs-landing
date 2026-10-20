@@ -1,6 +1,7 @@
 # Landing de Grimorio Labs — grimoriolabs.com
 
-Página institucional de la empresa. Se despliega en la **raíz** del dominio
+Página institucional de la empresa y vitrina de sus productos (Stockeao,
+Maese y Prensa Arcana). Se despliega en la **raíz** del dominio
 (`grimoriolabs.com`), separada de la app Maese, que vive en
 `maese.grimoriolabs.com`.
 
@@ -24,6 +25,22 @@ las páginas legales: con tres copias del mismo cromo, los estilos divergen
 en la primera edición. El script compartido se salta solo las secciones que
 una página no tiene (el formulario de novedades, por ejemplo) — así el mismo
 archivo sirve a las tres.
+
+**Stockeao** es el primer producto de la portada: una ficha que abre un
+modal con sus rasgos, los dos planes (Básico y Pro), los precios con IVA
+incluido, los 7 días gratis, el contacto y un botón a `stockeao/` (la página
+de descarga, `public/stockeao/index.html`, que también dice "7 días gratis").
+Los términos y la privacidad de Stockeao no están en este repo: los enlaces
+apuntan a `angelsek.github.io/inventariado-legal`. La portada tiene además
+traducciones al inglés de todo ese bloque y la frase de la marca es
+"Herramientas para la mesa de juego y el mostrador".
+
+**Los precios están escritos a mano** en dos lugares: en `public/index.html`
+(texto en español) y en `public/js/landing.js` (el diccionario de inglés,
+donde la clave es el texto en español exacto). Si un precio, un plan o el
+período de prueba cambia, hay que tocar los dos, y también
+`public/stockeao/index.html` si cambia lo de los días gratis; si la clave del
+diccionario no coincide con el HTML, esa línea queda sin traducir.
 
 Las páginas legales existen por partida doble: Google las exige para mostrar
 el nombre "Maese" en la pantalla de consentimiento de OAuth en lugar del

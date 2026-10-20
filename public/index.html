@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grimorio Labs — Soluciones para juegos de mesa y rol</title>
-<meta name="description" content="Grimorio Labs construye herramientas para quienes dirigen y juegan juegos de rol en una mesa real. Maese, nuestro compendio para el director de juego, y Prensa Arcana, nuestro editor de manuales.">
+<title>Grimorio Labs — Herramientas para la mesa de juego y el mostrador</title>
+<meta name="description" content="Grimorio Labs construye herramientas simples para quienes juegan rol en una mesa real y para quienes atienden un negocio de barrio: Stockeao, Maese y Prensa Arcana.">
 
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
@@ -12,7 +12,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Grimorio Labs">
-<meta property="og:description" content="Soluciones para juegos de mesa y rol.">
+<meta property="og:description" content="Herramientas para la mesa de juego y el mostrador.">
 <meta property="og:image" content="assets/grimorio-social-512.png">
 <meta name="twitter:card" content="summary">
 
@@ -41,9 +41,9 @@
   <section class="contenedor hero">
     <img class="hero-logo" src="assets/grimorio-icon-512.png" alt="Grimorio Labs" width="168" height="168">
     <h1>Grimorio Labs</h1>
-    <p class="hero-tagline" data-i18n>Soluciones para juegos de mesa y rol</p>
+    <p class="hero-tagline" data-i18n>Herramientas para la mesa de juego y el mostrador</p>
     <div class="hero-linea"></div>
-    <p class="hero-bajada" data-i18n>Construimos herramientas para quienes dirigen y juegan en una mesa real. Menos administración, más partida.</p>
+    <p class="hero-bajada" data-i18n>Construimos herramientas para quienes juegan en una mesa real y para quienes atienden un negocio de barrio. Menos administración, más tiempo para lo que importa.</p>
   </section>
 
   <section class="contenedor seccion" id="quienes-somos">
@@ -51,6 +51,7 @@
     <div class="prosa">
       <p data-i18n>Grimorio Labs es un estudio pequeño con una idea simple detrás: el juego de rol de mesa se disfruta en persona, con dados de verdad y gente alrededor.</p>
       <p data-i18n>Nuestras herramientas no reemplazan esa mesa, la acompañan. Se encargan de la preparación, la referencia y el papeleo para que nadie tenga que frenar la partida a buscar un dato.</p>
+      <p data-i18n>Con la misma idea nació Stockeao, para almacenes y negocios de barrio: que la herramienta acompañe el mostrador en vez de complicarlo.</p>
     </div>
   </section>
 
@@ -59,6 +60,17 @@
     <p class="fichas-nota" data-i18n>Abre una ficha para ver todo lo que hace.</p>
 
     <div class="fichas">
+      <!-- `aria-labelledby` en vez de un `aria-label` escrito a mano: el nombre
+           accesible sale del texto que ya está en la ficha, así que se traduce
+           solo y no hay una tercera copia de la misma frase que mantener. -->
+      <button class="ficha" type="button" aria-haspopup="dialog"
+              aria-labelledby="ficha-stockeao-nombre ficha-stockeao-sub" data-abre="modal-stockeao">
+        <img class="icono-app" src="stockeao/icono.png" alt="" width="96" height="96">
+        <span class="ficha-nombre" id="ficha-stockeao-nombre">Stockeao</span>
+        <span class="ficha-subtitulo" id="ficha-stockeao-sub" data-i18n>Ventas, stock y caja para negocios de barrio</span>
+        <span class="producto-insignia" data-i18n>Disponible</span>
+      </button>
+
       <!-- `aria-labelledby` en vez de un `aria-label` escrito a mano: el nombre
            accesible sale del texto que ya está en la ficha, así que se traduce
            solo y no hay una tercera copia de la misma frase que mantener. -->
@@ -86,6 +98,84 @@
          modal único al que se le inyecta contenido: así el texto vive en el
          DOM como el resto de la página y el selector de idioma lo traduce
          sin tener que saber que los modales existen. -->
+    <dialog class="modal" id="modal-stockeao" aria-labelledby="nombre-stockeao">
+      <button class="modal-cerrar" type="button" data-cierra
+              data-i18n-aria-label="Cerrar" aria-label="Cerrar">&times;</button>
+      <div class="modal-caja">
+
+        <div class="producto-cabecera">
+          <img class="icono-app" src="stockeao/icono.png" alt="" width="76" height="76">
+          <div>
+            <div class="producto-nombre" id="nombre-stockeao">Stockeao</div>
+            <div class="producto-subtitulo" data-i18n>Ventas, stock y caja para negocios de barrio</div>
+            <span class="producto-insignia" data-i18n>Disponible</span>
+          </div>
+        </div>
+
+        <p class="producto-desc" data-i18n>Una app Android para almacenes, botillerías, kioskos y bazares. Vendes, cobras y llevas el stock desde el teléfono, aunque se corte internet: cuando vuelve la señal, todo se sincroniza entre los teléfonos del negocio.</p>
+
+        <div class="rejilla">
+          <div class="rasgo">
+            <h3 data-i18n>Vende con el escáner</h3>
+            <p data-i18n>Apunta la cámara al código de barras y el producto entra a la venta. Con packs y promociones que se aplican solos.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Caja en orden</h3>
+            <p data-i18n>Abre y cierra la caja cada día, con lo que entró por efectivo, débito o transferencia, y cuadra sin calculadora.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Stock al día</h3>
+            <p data-i18n>Registra las compras a proveedores, haz conteos de inventario y lleva la cuenta de los envases retornables.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Fiado y reportes</h3>
+            <p data-i18n>Anota lo que te deben tus clientes y mira qué se vende más, qué día y cuánto ganaste.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Varios teléfonos, un negocio</h3>
+            <p data-i18n>Todos los equipos del negocio comparten productos y ventas. Funciona sin internet y se pone al día solo.</p>
+          </div>
+          <div class="rasgo">
+            <h3 data-i18n>Cada persona con sus permisos</h3>
+            <p data-i18n>El dueño elige qué puede hacer cada persona que atiende: vender, abrir la caja, cambiar precios o ver reportes.</p>
+          </div>
+        </div>
+
+        <div class="principio">
+          <h3 data-i18n>Hecho para el mostrador</h3>
+          <p data-i18n>Letra grande, botones grandes y pocos pasos. Pensado para quien atiende el negocio, no para un contador.</p>
+        </div>
+
+        <h3 class="planes-titulo" data-i18n>Planes</h3>
+        <div class="rejilla planes">
+          <div class="rasgo">
+            <h3 data-i18n>Básico</h3>
+            <p class="plan-precio" data-i18n>$9.990 al mes</p>
+            <p data-i18n>o $99.900 al año (12 meses por el precio de 10). Hasta 2 equipos.</p>
+          </div>
+          <div class="rasgo">
+            <!-- Sin data-i18n: "Pro" se escribe igual en los dos idiomas. -->
+            <h3>Pro</h3>
+            <p class="plan-precio" data-i18n>$14.990 al mes</p>
+            <p data-i18n>o $149.900 al año (12 meses por el precio de 10). Hasta 5 equipos.</p>
+          </div>
+        </div>
+        <p class="planes-nota" data-i18n>Precios en pesos chilenos, con IVA incluido. Los primeros 7 días son gratis. El pago es por transferencia.</p>
+
+        <div class="acciones">
+          <a class="boton boton-principal" href="stockeao/" data-i18n>Descargar Stockeao</a>
+          <span class="acciones-nota" data-i18n>Para teléfonos Android. Se instala desde nuestra página, fuera de Play Store.</span>
+        </div>
+
+        <p class="producto-enlaces">
+          <a href="mailto:contacto@grimoriolabs.com">contacto@grimoriolabs.com</a>
+          <a href="https://angelsek.github.io/inventariado-legal/terminos.html" data-i18n>Términos de Stockeao</a>
+          <a href="https://angelsek.github.io/inventariado-legal/privacidad.html" data-i18n>Privacidad de Stockeao</a>
+        </p>
+
+      </div>
+    </dialog>
+
     <dialog class="modal" id="modal-maese" aria-labelledby="nombre-maese">
       <button class="modal-cerrar" type="button" data-cierra
               data-i18n-aria-label="Cerrar" aria-label="Cerrar">&times;</button>
@@ -100,7 +190,7 @@
           </div>
         </div>
 
-        <p class="producto-desc" data-i18n>El primero de la casa. Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.</p>
+        <p class="producto-desc" data-i18n>Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.</p>
 
         <div class="rejilla">
           <div class="rasgo">
@@ -198,7 +288,7 @@
     <div class="seccion-titulo"><h2 data-i18n>Novedades</h2></div>
     <div class="novedades">
       <div class="prosa">
-        <p data-i18n>Estamos trabajando en más herramientas para la mesa. Deja tu correo y te avisamos cuando haya algo nuevo.</p>
+        <p data-i18n>Estamos trabajando en más herramientas. Deja tu correo y te avisamos cuando haya algo nuevo.</p>
       </div>
 
       <form class="aviso-form" id="aviso-form" novalidate>
