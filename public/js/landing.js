@@ -18,14 +18,44 @@
   var EN = {
     "Idioma del sitio":"Site language",
 
-    "Soluciones para juegos de mesa y rol":"Tools for tabletop games and roleplaying",
-    "Construimos herramientas para quienes dirigen y juegan en una mesa real. Menos administración, más partida.":"We build tools for the people who run and play games around a real table. Less bookkeeping, more playing.",
+    "Herramientas para la mesa de juego y el mostrador":"Tools for the game table and the shop counter",
+    "Construimos herramientas para quienes juegan en una mesa real y para quienes atienden un negocio de barrio. Menos administración, más tiempo para lo que importa.":"We build tools for people who play around a real table and for people who run a neighborhood shop. Less bookkeeping, more time for what matters.",
 
     "Quiénes somos":"Who we are",
     "Grimorio Labs es un estudio pequeño con una idea simple detrás: el juego de rol de mesa se disfruta en persona, con dados de verdad y gente alrededor.":"Grimorio Labs is a small studio built on a simple idea: tabletop roleplaying is best enjoyed in person, with real dice and real people around the table.",
     "Nuestras herramientas no reemplazan esa mesa, la acompañan. Se encargan de la preparación, la referencia y el papeleo para que nadie tenga que frenar la partida a buscar un dato.":"Our tools don't replace that table, they support it. They handle the prep, the lookups and the paperwork so nobody has to stop the game to hunt for a number.",
+    "Con la misma idea nació Stockeao, para almacenes y negocios de barrio: que la herramienta acompañe el mostrador en vez de complicarlo.":"Stockeao was born from the same idea, for corner stores and neighborhood shops: the tool should support the counter, not complicate it.",
 
     "Nuestros productos":"Our products",
+    /* ---- Stockeao ---- */
+    "Ventas, stock y caja para negocios de barrio":"Sales, stock and till for neighborhood shops",
+    "Una app Android para almacenes, botillerías, kioskos y bazares. Vendes, cobras y llevas el stock desde el teléfono, aunque se corte internet: cuando vuelve la señal, todo se sincroniza entre los teléfonos del negocio.":"An Android app for corner stores, liquor stores, kiosks and variety shops. You sell, take payments and track stock from your phone, even when the internet drops: once the signal is back, everything syncs across the shop's phones.",
+    "Vende con el escáner":"Sell with the scanner",
+    "Apunta la cámara al código de barras y el producto entra a la venta. Con packs y promociones que se aplican solos.":"Point the camera at the barcode and the product goes into the sale. Bundles and promotions apply themselves.",
+    "Caja en orden":"A tidy till",
+    "Abre y cierra la caja cada día, con lo que entró por efectivo, débito o transferencia, y cuadra sin calculadora.":"Open and close the till every day, with what came in by cash, debit or bank transfer, and balance it without a calculator.",
+    "Stock al día":"Stock up to date",
+    "Registra las compras a proveedores, haz conteos de inventario y lleva la cuenta de los envases retornables.":"Record purchases from suppliers, run inventory counts and keep track of returnable bottles.",
+    "Fiado y reportes":"Store credit and reports",
+    "Anota lo que te deben tus clientes y mira qué se vende más, qué día y cuánto ganaste.":"Note what your customers owe you and see what sells best, on which day, and how much you made.",
+    "Varios teléfonos, un negocio":"Several phones, one shop",
+    "Todos los equipos del negocio comparten productos y ventas. Funciona sin internet y se pone al día solo.":"Every device in the shop shares products and sales. It works offline and catches up on its own.",
+    "Cada persona con sus permisos":"Permissions for each person",
+    "El dueño elige qué puede hacer cada persona que atiende: vender, abrir la caja, cambiar precios o ver reportes.":"The owner chooses what each staff member can do: sell, open the till, change prices or see reports.",
+    "Hecho para el mostrador":"Made for the counter",
+    "Letra grande, botones grandes y pocos pasos. Pensado para quien atiende el negocio, no para un contador.":"Big text, big buttons and few steps. Designed for whoever runs the shop, not for an accountant.",
+    "Planes":"Plans",
+    "Básico":"Basic",
+    "$9.990 al mes":"CLP 9,990 per month",
+    "o $99.900 al año (12 meses por el precio de 10). Hasta 2 equipos.":"or CLP 99,900 per year (12 months for the price of 10). Up to 2 devices.",
+    "$14.990 al mes":"CLP 14,990 per month",
+    "o $149.900 al año (12 meses por el precio de 10). Hasta 5 equipos.":"or CLP 149,900 per year (12 months for the price of 10). Up to 5 devices.",
+    "Precios en pesos chilenos, con IVA incluido. Los primeros 7 días son gratis. El pago es por transferencia.":"Prices in Chilean pesos, VAT included. The first 7 days are free. Payment is by bank transfer.",
+    "Descargar Stockeao":"Download Stockeao",
+    "Para teléfonos Android. Se instala desde nuestra página, fuera de Play Store.":"For Android phones. It installs from our own page (in Spanish), outside the Play Store.",
+    "Términos de Stockeao":"Stockeao terms",
+    "Privacidad de Stockeao":"Stockeao privacy",
+
     "Compendio del Director de Juego":"The Game Master's compendium",
     "Disponible":"Available now",
     "El primero de la casa. Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.":"Our first release. A table companion for whoever runs the game: it gets the session ready beforehand and, once you're playing, keeps everything within reach without pulling you out of the game.",
@@ -73,7 +103,7 @@
     "Cerrar":"Close",
 
     "Novedades":"What's next",
-    "Estamos trabajando en más herramientas para la mesa. Deja tu correo y te avisamos cuando haya algo nuevo.":"We're working on more tools for the table. Leave your email and we'll let you know when something new is ready.",
+    "Estamos trabajando en más herramientas. Deja tu correo y te avisamos cuando haya algo nuevo.":"We're working on more tools. Leave your email and we'll let you know when something new is ready.",
     "tu@correo.com":"you@email.com",
     "Tu dirección de correo":"Your email address",
     "Avisarme":"Notify me",
@@ -82,7 +112,7 @@
     "Grimorio Labs es un estudio independiente, sin relación ni respaldo de Wizards of the Coast. Maese es una herramienta de apoyo para quien dirige la partida: no reemplaza ningún manual de reglas ni los incluye.":"Grimorio Labs is an independent studio, not affiliated with or endorsed by Wizards of the Coast. Maese is a support tool for whoever runs the game: it neither replaces nor includes any rulebook.",
 
     /* Título de la pestaña del navegador. */
-    "Grimorio Labs — Soluciones para juegos de mesa y rol":"Grimorio Labs — Tools for tabletop games and roleplaying",
+    "Grimorio Labs — Herramientas para la mesa de juego y el mostrador":"Grimorio Labs — Tools for the game table and the shop counter",
     /* Estos dos faltaban desde el principio: sin ellos el titulo de la
        pestana de privacidad y terminos se queda en espanol en modo ingles. */
     "Política de privacidad — Grimorio Labs":"Privacy policy — Grimorio Labs",

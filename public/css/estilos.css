@@ -244,6 +244,22 @@ h3{font-size:1.12rem;color:var(--oro-claro)}
 .boton-principal:hover{background:var(--oro-claro)}
 .acciones-nota{font-size:.92rem;color:var(--texto-tenue)}
 
+/* Stockeao: su icono es un cuadrado lleno, a diferencia de los logos
+   recortados de Maese y Prensa Arcana; se le redondean las esquinas como en
+   su página de descarga. */
+.icono-app{border-radius:22%}
+
+/* Planes y precios dentro del modal. */
+.planes-titulo{font-size:1.3rem;margin:30px 0 14px}
+.plan-precio{font-family:var(--fuente-display);font-size:1.35rem;color:var(--oro-claro);margin:2px 0 4px}
+.planes .rasgo p + p{margin-top:4px}
+.planes-nota{margin:14px 0 0;font-size:.92rem;color:var(--texto-tenue)}
+
+/* Contacto y legales del producto, bajo las acciones. */
+.producto-enlaces{display:flex;gap:18px;flex-wrap:wrap;margin:22px 0 0;font-size:.9rem}
+.producto-enlaces a{color:var(--texto-tenue)}
+.producto-enlaces a:hover{color:var(--oro-claro)}
+
 /* --------------------------------------------------------------- novedades */
 .novedades{
   background:var(--cuero);
