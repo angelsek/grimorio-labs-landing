@@ -53,12 +53,12 @@
     "Precios en pesos chilenos, con IVA incluido. Los primeros 7 días son gratis. El pago es por transferencia.":"Prices in Chilean pesos, VAT included. The first 7 days are free. Payment is by bank transfer.",
     "Descargar Stockeao":"Download Stockeao",
     "Para teléfonos Android. Se instala desde nuestra página, fuera de Play Store.":"For Android phones. It installs from our own page (in Spanish), outside the Play Store.",
-    "Términos de Stockeao":"Stockeao terms",
-    "Privacidad de Stockeao":"Stockeao privacy",
+    "Términos de Stockeao":"Stockeao terms (in Spanish)",
+    "Privacidad de Stockeao":"Stockeao privacy (in Spanish)",
 
     "Compendio del Director de Juego":"The Game Master's compendium",
     "Disponible":"Available now",
-    "El primero de la casa. Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.":"Our first release. A table companion for whoever runs the game: it gets the session ready beforehand and, once you're playing, keeps everything within reach without pulling you out of the game.",
+    "Un compañero de mesa para quien dirige: prepara la sesión antes de que empiece y, durante la partida, deja todo a mano sin sacarte del juego.":"A table companion for whoever runs the game: it gets the session ready beforehand and, once you're playing, keeps everything within reach without pulling you out of the game.",
 
     "Bestiario de 450 criaturas":"A bestiary of 450 creatures",
     "Fichas completas y buscables al instante, con más manuales que se suman por campaña.":"Full stat blocks, searchable instantly, with extra rulebooks you can add per campaign.",
