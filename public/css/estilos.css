@@ -251,7 +251,9 @@ h3{font-size:1.12rem;color:var(--oro-claro)}
 
 /* Planes y precios dentro del modal. */
 .planes-titulo{font-size:1.3rem;margin:30px 0 14px}
-.plan-precio{font-family:var(--fuente-display);font-size:1.35rem;color:var(--oro-claro);margin:2px 0 4px}
+/* `.planes .rasgo` para ganarle a `.rasgo p`. En Inter y no en Cinzel: la
+   display achica las minúsculas y el punto de miles casi no se ve. */
+.planes .rasgo .plan-precio{font-size:1.3rem;font-weight:600;color:var(--oro-claro);margin:2px 0 4px}
 .planes .rasgo p + p{margin-top:4px}
 .planes-nota{margin:14px 0 0;font-size:.92rem;color:var(--texto-tenue)}
 
